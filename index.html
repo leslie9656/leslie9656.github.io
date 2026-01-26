@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>具身智能研究者 | 个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f6f8fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 30px;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            object-fit: cover;
+        }
+        
+        .info h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .info p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 1.5em;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .project-card h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .project-card p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .note-list {
+            list-style: none;
+        }
+        
+        .note-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .note-item:last-child {
+            border-bottom: none;
+        }
+        
+        .note-item h3 {
+            color: #2d3748;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .note-item p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+        
+        .date {
+            color: #718096;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .skill {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .repo-link {
+            display: inline-block;
+            background: #24292e;
+            color: white !important;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        
+        .repo-link:hover {
+            background: #2f363d;
+        }
+        
+        .markdown-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+        
+        .recent-activity {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .activity-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .activity-item.type-commit {
+            border-left-color: #2196f3;
+        }
+        
+        .activity-item.type-issue {
+            border-left-color: #ff9800;
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .activity-title {
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .activity-time {
+            color: #718096;
+            font-size: 0.85em;
+        }
+        
+        .activity-desc {
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjgiIHI9IjQiPjwvY2lyY2xlPjxwYXRoIGQ9Ik02IDE4YTIgMiAwIDAgMSAyLTJoOGEyIDIgMCAwIDEgMiAydjFhMSAxIDAgMCAxLTEgMWgtMTBhMSAxIDAgMCAxLTEtMVYxOHoiPjwvcGF0aD48L3N2Zz4=" alt="Profile Avatar" class="avatar">
+                <div class="info">
+                    <h1>张小明</h1>
+                    <p>清华大学计算机系 一年级研究生</p>
+                    <p>研究方向：具身智能中的Agentic RL</p>
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername">GitHub</a>
+                        <a href="mailto:your.email@example.com">邮箱</a>
+                        <a href="https://scholar.google.com">Google Scholar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h2>>About Me</h2>
+                <p>我是清华大学计算机系的一名一年级研究生，专注于具身智能领域中的Agentic RL方向。我的研究兴趣包括：</p>
+                <ul style="margin: 15px 0 15px 20px; color: #666;">
+                    <li>多模态感知与决策融合</li>
+                    <li>具身环境中的自主探索</li>
+                    <li>强化学习在机器人控制中的应用</li>
+                    <li>大模型驱动的智能体行为规划</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">PyTorch</span>
+                    <span class="skill">ROS</span>
+                    <span class="skill">Reinforcement Learning</span>
+                    <span class="skill">Computer Vision</span>
+                    <span class="skill">Embodied AI</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Recent Activity</h2>
+                <div class="recent-activity">
+                    <div class="activity-item type-commit">
+                        <div class="activity-header">
+                            <span class="activity-title">提交代码</span>
+                            <span class="activity-time">2小时前</span>
+                        </div>
+                        <div class="activity-desc">更新了README文档，添加了最新的实验结果</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-header">
+                            <span class="activity-title">完成实验</span>
+                            <span class="activity-time">昨天</span>
+                        </div>
+                        <div class="activity-desc">完成了多模态融合模型的初步测试，准确率提升5%</div>
+                    </div>
+                    <div class="activity-item type-issue">
+                        <div class="activity-header">
+                            <span class="activity-title">发表论文</span>
+                            <span class="activity-time">一周前</span>
+                        </div>
+                        <div class="activity-desc">投稿至ICML 2024关于具身智能的综述文章</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Research Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Multi-modal Agentic RL Framework</h3>
+                    <p>开发了一个结合视觉、触觉和语言信息的具身智能体强化学习框架，用于复杂环境中的自主导航。</p>
+                    <div class="tags">
+                        <span class="tag">Reinforcement Learning</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Robotics</span>
+                    </div>
+                    <a href="#" class="repo-link">查看仓库</a>
+                </div>
+                <div class="project-card">
+                    <h3>Embodied Environment Simulator</h3>
+                    <p>构建了一个高保真度的具身智能仿真环境，支持多种传感器模态和物理交互。</p>
+                    <div class="tags">
+                        <span class="tag">Simulation</span>
+                        <span class="tag">Unity</span>
+                        <span class="tag">Physics Engine</span>
+                    </div>
+                    <a href="#" class="repo-link">查看仓库</a>
+                </div>
+                <div class="project-card">
+                    <h3>Vision-Language Navigation</h3>
+                    <p>基于大语言模型的视觉导航系统，能够理解和执行自然语言指令进行导航任务。</p>
+                    <div class="tags">
+                        <span class="tag">Vision-Language</span>
+                        <span class="tag">Navigation</span>
+                        <span class="tag">LLM</span>
+                    </div>
+                    <a href="#" class="repo-link">查看仓库</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Learning Notes</h2>
+                <ul class="note-list">
+                    <li class="note-item">
+                        <h3>Reinforcement Learning Theory</h3>
+                        <p>深入学习强化学习基础理论，包括马尔可夫决策过程、价值函数、策略梯度等核心概念</p>
+                        <div class="date">2024-01-15</div>
+                    </li>
+                    <li class="note-item">
+                        <h3>Embodied AI Survey</h3>
+                        <p>整理了近年来具身智能领域的最新进展，重点关注多模态融合和环境交互机制</p>
+                        <div class="date">2024-01-10</div>
+                    </li>
+                    <li class="note-item">
+                        <h3>PyTorch Implementation Tips</h3>
+                        <p>记录了在PyTorch中实现深度强化学习算法的实用技巧和最佳实践</p>
+                        <div class="date">2024-01-05</div>
+                    </li>
+                </ul>
+                <a href="https://github.com/yourusername/learning-notes" class="repo-link">查看全部笔记</a>
+            </div>
+
+            <div class="card">
+                <h2>Markdown写作示例</h2>
+                <p>以下是使用README格式撰写学习笔记的示例：</p>
+                <div class="markdown-preview">
+# 强化学习中的策略梯度方法
+
+## 核心思想
+策略梯度方法直接优化策略函数π(a|s)，通过梯度上升来最大化期望回报。
+
+## 关键公式
+$$\nabla J(\theta) = \mathbb{E}[\nabla \log \pi_\theta(a|s) Q^\pi(s,a)]$$
+
+## 实现要点
+- 使用优势函数代替Q值来减少方差
+- 适当的基线函数选择
+- 学习率调度策略
+
+### 代码结构
