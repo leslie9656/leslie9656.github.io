@@ -288,13 +288,12 @@
             <div class="profile">
                 <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjgiIHI9IjQiPjwvY2lyY2xlPjxwYXRoIGQ9Ik02IDE4YTIgMiAwIDAgMSAyLTJoOGEyIDIgMCAwIDEgMiAydjFhMSAxIDAgMCAxLTEgMWgtMTBhMSAxIDAgMCAxLTEtMVYxOHoiPjwvcGF0aD48L3N2Zz4=" alt="Profile Avatar" class="avatar">
                 <div class="info">
-                    <h1>张小明</h1>
-                    <p>清华大学计算机系 一年级研究生</p>
-                    <p>研究方向：具身智能中的Agentic RL</p>
+                    <h1>王永源</h1>
+                    <p>新加坡国立大学 机器人学硕士研究生</p>
+                    <p>研究方向: Agentic RL, 运动控制</p>
                     <div class="social-links">
-                        <a href="https://github.com/yourusername">GitHub</a>
-                        <a href="mailto:your.email@example.com">邮箱</a>
-                        <a href="https://scholar.google.com">Google Scholar</a>
+                        <a href="https://github.com/leslie9656">GitHub</a>
+                        <a href="mailto:e1101587@u.nus.edu">邮箱</a>
                     </div>
                 </div>
             </div>
@@ -383,45 +382,3 @@
                 </div>
             </div>
         </div>
-
-        <div class="grid">
-            <div class="card">
-                <h2>Learning Notes</h2>
-                <ul class="note-list">
-                    <li class="note-item">
-                        <h3>Reinforcement Learning Theory</h3>
-                        <p>深入学习强化学习基础理论，包括马尔可夫决策过程、价值函数、策略梯度等核心概念</p>
-                        <div class="date">2024-01-15</div>
-                    </li>
-                    <li class="note-item">
-                        <h3>Embodied AI Survey</h3>
-                        <p>整理了近年来具身智能领域的最新进展，重点关注多模态融合和环境交互机制</p>
-                        <div class="date">2024-01-10</div>
-                    </li>
-                    <li class="note-item">
-                        <h3>PyTorch Implementation Tips</h3>
-                        <p>记录了在PyTorch中实现深度强化学习算法的实用技巧和最佳实践</p>
-                        <div class="date">2024-01-05</div>
-                    </li>
-                </ul>
-                <a href="https://github.com/yourusername/learning-notes" class="repo-link">查看全部笔记</a>
-            </div>
-
-            <div class="card">
-                <h2>Markdown写作示例</h2>
-                <p>以下是使用README格式撰写学习笔记的示例：</p>
-                <div class="markdown-preview">
-# 强化学习中的策略梯度方法
-
-## 核心思想
-策略梯度方法直接优化策略函数π(a|s)，通过梯度上升来最大化期望回报。
-
-## 关键公式
-$$\nabla J(\theta) = \mathbb{E}[\nabla \log \pi_\theta(a|s) Q^\pi(s,a)]$$
-
-## 实现要点
-- 使用优势函数代替Q值来减少方差
-- 适当的基线函数选择
-- 学习率调度策略
-
-### 代码结构
